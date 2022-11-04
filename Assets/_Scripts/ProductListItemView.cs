@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
 
-public class ProductListItemView : MonoBehaviour
+public class ProductListItemView : ProductItemView
 {
 }

@@ -6,12 +6,21 @@ using UnityEngine.UI;
 public class ProductItemView : MonoBehaviour
 {
     [SerializeField] protected TMP_Text productName;
-    [SerializeField] protected TMP_Text productDescription;
     [SerializeField] protected TMP_Text productPrice;
+    [SerializeField] protected TMP_Text productDescription;
+    [SerializeField] protected Image productImage;
     [SerializeField] protected Button initialIncreaseButton;
     [SerializeField] protected Button increaseButton;
     [SerializeField] protected Button decreaseButton;
     [SerializeField] protected GameObject quantityAdjustmentGroup;
+
+    public void AssignProduct(Product product)
+    {
+        productName.text = product.Name;
+        productPrice.text = product.Price.ToString();
+        productDescription.text = product.Description;
+        productImage.sprite = product.Sprite;
+    }
 
     protected virtual void Start()
     {
