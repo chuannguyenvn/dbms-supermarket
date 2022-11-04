@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -17,7 +18,7 @@ public class ProductItemView : MonoBehaviour
     public void AssignProduct(Product product)
     {
         productName.text = product.Name;
-        productPrice.text = product.Price.ToString();
+        productPrice.text = String.Format("{0:n0}", product.Price) + "đ";
         productDescription.text = product.Description;
         productImage.sprite = product.Sprite;
     }

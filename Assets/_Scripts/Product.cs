@@ -4,7 +4,7 @@
 public class Product : ScriptableObject
 {
     public string Name;
-    public double Price;
+    public int Price;
     [TextArea(10, 10)] public string Description;
     public ProductType ProductType;
     public Sprite Sprite;
