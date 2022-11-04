@@ -1359,12 +1359,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   productName: {fileID: 5908462405433272224}
-  productDescription: {fileID: 2760087156562755148}
   productPrice: {fileID: 7757918758298036789}
+  productDescription: {fileID: 2760087156562755148}
+  productImage: {fileID: 0}
   initialIncreaseButton: {fileID: 2685141988750486863}
   increaseButton: {fileID: 1227250479279776315}
   decreaseButton: {fileID: 3669572740520421301}
   quantityAdjustmentGroup: {fileID: 6585456803379649625}
+  orderItemCount: {fileID: 8248389405836032981}
 --- !u!1 &8823077080340180453
 GameObject:
   m_ObjectHideFlags: 0
