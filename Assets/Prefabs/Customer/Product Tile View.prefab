@@ -29,8 +29,8 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 682559874770481030}
-  - {fileID: 2648237475778589266}
   - {fileID: 1660546990498154759}
+  - {fileID: 2648237475778589266}
   m_Father: {fileID: 7404936188716008032}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -679,7 +679,7 @@ RectTransform:
   m_Children:
   - {fileID: 2754211464461312545}
   m_Father: {fileID: 5146572987466311229}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1014,7 +1014,7 @@ RectTransform:
   - {fileID: 8932962627946538883}
   - {fileID: 5366534797273463293}
   m_Father: {fileID: 5146572987466311229}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
@@ -1181,7 +1181,7 @@ GameObject:
   - component: {fileID: 7404936188716008032}
   - component: {fileID: 2900020485735036872}
   m_Layer: 0
-  m_Name: Product Item View
+  m_Name: Product Tile View
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

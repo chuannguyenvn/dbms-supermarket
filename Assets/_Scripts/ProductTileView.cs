@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProductSquareView : MonoBehaviour
+public class ProductTileView : MonoBehaviour
 {
     [SerializeField] private Button initialIncreaseButton;
     [SerializeField] private Button increaseButton;
