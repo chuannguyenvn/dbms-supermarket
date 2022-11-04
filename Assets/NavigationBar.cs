@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.Design.Serialization;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -6,9 +7,9 @@ using UnityEngine.UI;
 public class NavigationBar : Singleton<NavigationBar>
 {
     public event Action<NavigationBarButton> NavigationItemChosen;
-    
+
     [SerializeField] private Image indicator;
-    
+
     public void OnNavigationItemChosen(NavigationBarButton item)
     {
         NavigationItemChosen?.Invoke(item);
