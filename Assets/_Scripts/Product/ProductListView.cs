@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class ProductListView : ProductsView
+public class ProductListView : ProductView
 {
     
 }

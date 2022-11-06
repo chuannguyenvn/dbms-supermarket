@@ -7,13 +7,13 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-public class ProductsView : MonoBehaviour
+public class ProductView : MonoBehaviour
 {
-    protected List<ProductItemView> productItemViews;
+    protected List<ProductView_Item> productItemViews;
 
     private void Start()
     {
-        productItemViews = new List<ProductItemView>();
+        productItemViews = new List<ProductView_Item>();
 
         var products = ProductManager.Instance.Products;
         var margin = VisualManager.Instance.ProductListItemViewVerticalMargin;
@@ -21,7 +21,7 @@ public class ProductsView : MonoBehaviour
         {
             var productListItemView =
                 Instantiate(ResourceManager.Instance.ProductListItemView, transform)
-                    .GetComponent<ProductListItemView>();
+                    .GetComponent<ProductListView_Item>();
 
             productListItemView.AssignProduct(products[i]);
             var viewRectTransform = productListItemView.GetComponent<RectTransform>();

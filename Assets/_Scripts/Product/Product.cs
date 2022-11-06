@@ -19,16 +19,3 @@ public enum ProductType
     Toys,
     Clothes,
 }
-
-public class ProductOrder_Item
-{
-    public Product Product;
-    public int Count;
-    public int Price => Product.Price * Count;
-
-    public ProductOrder_Item(Product product, int count)
-    {
-        Product = product;
-        Count = count;
-    }
-}

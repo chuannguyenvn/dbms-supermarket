@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ProductItemView : MonoBehaviour
+public class ProductView_Item : MonoBehaviour
 {
     [SerializeField] protected TMP_Text productName;
     [SerializeField] protected TMP_Text productPrice;
@@ -14,7 +14,7 @@ public class ProductItemView : MonoBehaviour
     [SerializeField] protected Button increaseButton;
     [SerializeField] protected Button decreaseButton;
     [SerializeField] protected GameObject quantityAdjustmentGroup;
-    [SerializeField] private TMP_Text orderItemCount;
+    [SerializeField] protected TMP_Text orderItemCount;
 
     private Product product;
 
@@ -43,18 +43,17 @@ public class ProductItemView : MonoBehaviour
 
     private void AddOneItem()
     {
-        CartManager.Instance.AddOneProductItem(product);
-
-        orderItemCount.text = CartManager.Instance.CartList[product].Item1.Count.ToString();
+        ProductCartManager.Instance.AddOneProductItem(product);
+        orderItemCount.text = ProductCartManager.Instance.CartList[product].Item1.Count.ToString();
     }
 
     private void RemoveOneItem()
     {
-        CartManager.Instance.RemoveOneProductItem(product);
+        ProductCartManager.Instance.RemoveOneProductItem(product);
 
-        if (CartManager.Instance.CartList.ContainsKey(product))
+        if (ProductCartManager.Instance.CartList.ContainsKey(product))
         {
-            var count = CartManager.Instance.CartList[product].Item1.Count;
+            var count = ProductCartManager.Instance.CartList[product].Item1.Count;
             orderItemCount.text = count.ToString();
         }
         else
