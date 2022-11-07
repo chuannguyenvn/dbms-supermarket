@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,50 +15,49 @@ public class ProductView_Item : MonoBehaviour
     [SerializeField] protected GameObject quantityAdjustmentGroup;
     [SerializeField] protected TMP_Text orderItemCount;
 
-    private Product product;
+    protected ProductOrder_Item orderItem;
 
-    public void AssignProduct(Product product)
+    public void AssignProduct(ProductOrder_Item orderItem)
     {
-        this.product = product;
-        productName.text = product.Name;
-        productPrice.text = ProductUtility.FormatVNDPrice(product.Price);
-        productDescription.text = product.Description;
-        productImage.sprite = product.Sprite;
+        this.orderItem = orderItem;
+        
+        productName.text = orderItem.Product.Name;
+        productPrice.text = ProductUtility.FormatVNDPrice(orderItem.Product.Price);
+        productDescription.text = orderItem.Product.Description;
+        productImage.sprite = orderItem.Product.Sprite;
+        
+        orderItem.AssignViewItem(this);
     }
 
     protected virtual void Start()
     {
-        initialIncreaseButton.onClick.AddListener(AddFirstItem);
+        initialIncreaseButton.onClick.AddListener(AddOneItem);
         increaseButton.onClick.AddListener(AddOneItem);
         decreaseButton.onClick.AddListener(RemoveOneItem);
     }
-
-    protected void AddFirstItem()
-    {
-        initialIncreaseButton.gameObject.SetActive(false);
-        quantityAdjustmentGroup.SetActive(true);
-        AddOneItem();
-    }
-
+    
     private void AddOneItem()
     {
-        ProductCartManager.Instance.AddOneProductItem(product);
-        orderItemCount.text = ProductCartManager.Instance.CartList[product].Item1.Count.ToString();
+        ProductOrderManager.Instance.AddOneProductItem(orderItem.Product);
     }
 
     private void RemoveOneItem()
     {
-        ProductCartManager.Instance.RemoveOneProductItem(product);
+        ProductOrderManager.Instance.RemoveOneProductItem(orderItem.Product);
+    }
 
-        if (ProductCartManager.Instance.CartList.ContainsKey(product))
-        {
-            var count = ProductCartManager.Instance.CartList[product].Item1.Count;
-            orderItemCount.text = count.ToString();
-        }
-        else
+    public virtual void UpdateQuantity(int count)
+    {
+        orderItemCount.text = count.ToString();
+        if (count == 0)
         {
             initialIncreaseButton.gameObject.SetActive(true);
             quantityAdjustmentGroup.SetActive(false);
+        }
+        else
+        {
+            initialIncreaseButton.gameObject.SetActive(false);
+            quantityAdjustmentGroup.SetActive(true); 
         }
     }
 }

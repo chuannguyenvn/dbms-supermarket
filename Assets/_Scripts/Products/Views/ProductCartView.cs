@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 
-public class ProductCartView : Singleton<ProductCartView>
+public class ProductCartView : MonoBehaviour
 {
     public bool IsVisible { get; private set; }
     private List<ProductCartView_Item> viewItems = new List<ProductCartView_Item>();
@@ -13,12 +12,17 @@ public class ProductCartView : Singleton<ProductCartView>
         Hide();
     }
 
-    public void AddNewViewItem(ProductCartView_Item item)
+    public void AddNewViewItem(ProductOrder_Item orderItem)
     {
-        viewItems.Add(item);
-        var itemRect = item.GetComponent<RectTransform>();
+        var view = Instantiate(ResourceManager.Instance.ProductCartItemView)
+            .GetComponent<ProductCartView_Item>();
+
+        viewItems.Add(view);
+        view.AssignProduct(orderItem);
+
+        var itemRect = view.GetComponent<RectTransform>();
         var initialLeftRight = itemRect.sizeDelta;
-        item.transform.SetParent(transform);
+        view.transform.SetParent(transform);
         itemRect.sizeDelta = initialLeftRight;
         itemRect.anchoredPosition = new Vector2(0, -(viewItems.Count - 1) * itemRect.sizeDelta.y);
     }

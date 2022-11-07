@@ -1,7 +1,4 @@
-﻿using UnityEngine;
-using UnityEngine.Networking;
-
-public class ProductGridView : ProductView
+﻿public class ProductGridView : ProductView
 {
     
 }

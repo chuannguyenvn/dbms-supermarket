@@ -5,9 +5,9 @@ public class ProductCartView_Item : ProductView_Item
 {
     [SerializeField] private TMP_Text totalPrice;
 
-    public void SetText(int totalPrice, int count)
+    public override void UpdateQuantity(int count)
     {
-        this.totalPrice.text = ProductUtility.FormatVNDPrice(totalPrice);
-        orderItemCount.text = count.ToString();
+        base.UpdateQuantity(count);
+        totalPrice.text = ProductUtility.FormatVNDPrice(orderItem.Price);
     }
 }

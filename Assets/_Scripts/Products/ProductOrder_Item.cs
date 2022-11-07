@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 public class ProductOrder_Item
 {
-    public event Action<int> UpdateCount;
-    public Product Product;
+    public Product Product { get; private set; }
+    
     private int count;
     public int Count
     {
@@ -12,17 +12,25 @@ public class ProductOrder_Item
         set
         {
             count = value;
-            UpdateCount?.Invoke(count);
+            foreach (var view in views)
+            {
+                view.UpdateQuantity(count);
+            }
         }
     }
     
     public int Price => Product.Price * Count;
-    
+
+    private List<ProductView_Item> views = new();
+
     public ProductOrder_Item(Product product, int count)
     {
         Product = product;
         Count = count;
     }
-    
-    
+
+    public void AssignViewItem(ProductView_Item viewItem)
+    {
+        views.Add(viewItem);
+    }
 }
