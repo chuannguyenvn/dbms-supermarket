@@ -13,7 +13,7 @@ public class ProductListView : ProductView
         {
             var productListItemView =
                 Instantiate(ResourceManager.Instance.ProductListItemView, transform)
-                    .GetComponent<ProductListView_Item>();
+                    .GetComponent<ProductListViewItem>();
 
             productListItemView.AssignProduct(orderItem);
             var viewRectTransform = productListItemView.GetComponent<RectTransform>();

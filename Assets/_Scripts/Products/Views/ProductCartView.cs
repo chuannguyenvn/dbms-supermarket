@@ -5,17 +5,17 @@ using UnityEngine;
 public class ProductCartView : MonoBehaviour
 {
     public bool IsVisible { get; private set; }
-    private List<ProductCartView_Item> viewItems = new List<ProductCartView_Item>();
+    private List<ProductCartViewItem> viewItems = new List<ProductCartViewItem>();
 
     private void Start()
     {
         Hide();
     }
 
-    public void AddNewViewItem(ProductOrder_Item orderItem)
+    public void AddNewViewItem(ProductOrderItem orderItem)
     {
         var view = Instantiate(ResourceManager.Instance.ProductCartItemView)
-            .GetComponent<ProductCartView_Item>();
+            .GetComponent<ProductCartViewItem>();
 
         viewItems.Add(view);
         view.AssignProduct(orderItem);

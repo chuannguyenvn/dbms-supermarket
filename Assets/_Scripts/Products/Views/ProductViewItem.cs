@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ProductView_Item : MonoBehaviour
+public class ProductViewItem : MonoBehaviour
 {
     [SerializeField] protected TMP_Text productName;
     [SerializeField] protected TMP_Text productPrice;
@@ -15,9 +15,9 @@ public class ProductView_Item : MonoBehaviour
     [SerializeField] protected GameObject quantityAdjustmentGroup;
     [SerializeField] protected TMP_Text orderItemCount;
 
-    protected ProductOrder_Item orderItem;
+    protected ProductOrderItem orderItem;
 
-    public void AssignProduct(ProductOrder_Item orderItem)
+    public void AssignProduct(ProductOrderItem orderItem)
     {
         this.orderItem = orderItem;
         

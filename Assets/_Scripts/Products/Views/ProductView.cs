@@ -4,7 +4,7 @@ using UnityEngine;
 
 public abstract class ProductView : MonoBehaviour
 {
-    protected List<ProductView_Item> productItemViews = new List<ProductView_Item>();
+    protected List<ProductViewItem> productItemViews = new List<ProductViewItem>();
 
     protected virtual void Start()
     {

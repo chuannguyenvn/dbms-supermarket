@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-public class ProductOrder_Item
+public class ProductOrderItem
 {
     public Product Product { get; private set; }
     
@@ -21,15 +21,15 @@ public class ProductOrder_Item
     
     public int Price => Product.Price * Count;
 
-    private List<ProductView_Item> views = new();
+    private List<ProductViewItem> views = new();
 
-    public ProductOrder_Item(Product product, int count)
+    public ProductOrderItem(Product product, int count)
     {
         Product = product;
         Count = count;
     }
 
-    public void AssignViewItem(ProductView_Item viewItem)
+    public void AssignViewItem(ProductViewItem viewItem)
     {
         views.Add(viewItem);
     }

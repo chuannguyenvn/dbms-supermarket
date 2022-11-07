@@ -9,13 +9,13 @@ public class ProductOrderManager : Singleton<ProductOrderManager>
     [SerializeField] private Button cartButton;
     [SerializeField] private ProductCartView productCartView;
 
-    public Dictionary<Product, ProductOrder_Item> Order = new();
+    public Dictionary<Product, ProductOrderItem> Order = new();
 
     private void Start()
     {
         foreach (var product in ProductManager.Instance.Products)
         {
-            var productOrder = new ProductOrder_Item(product, 0);
+            var productOrder = new ProductOrderItem(product, 0);
             productCartView.AddNewViewItem(productOrder);
             Order.Add(product, productOrder);
         }
