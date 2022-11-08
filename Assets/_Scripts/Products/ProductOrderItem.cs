@@ -21,7 +21,7 @@ public class ProductOrderItem
     
     public int Price => Product.Price * Count;
 
-    private List<ProductViewItem> views = new();
+    private List<ProductItemView> views = new();
 
     public ProductOrderItem(Product product, int count)
     {
@@ -29,8 +29,8 @@ public class ProductOrderItem
         Count = count;
     }
 
-    public void AssignViewItem(ProductViewItem viewItem)
+    public void AssignViewItem(ProductItemView itemView)
     {
-        views.Add(viewItem);
+        views.Add(itemView);
     }
 }

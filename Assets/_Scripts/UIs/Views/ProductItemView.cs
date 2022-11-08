@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 
-public class ProductViewItem : MonoBehaviour
+public class ProductItemView : MonoBehaviour
 {
     [SerializeField] protected RectTransform rectTransform;
     public RectTransform RectTransform => rectTransform;

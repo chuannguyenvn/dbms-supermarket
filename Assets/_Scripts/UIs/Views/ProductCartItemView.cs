@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class ProductCartViewItem : ProductViewItem
+public class ProductCartItemView : ProductItemView
 {
     [SerializeField] private TMP_Text totalPrice;
 

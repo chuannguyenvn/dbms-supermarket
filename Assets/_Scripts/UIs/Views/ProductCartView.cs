@@ -24,7 +24,7 @@ public class ProductCartView : ProductView
     public void AddViewItem(ProductOrderItem orderItem)
     {
         var view = Instantiate(ResourceManager.Instance.ProductCartItemView)
-            .GetComponent<ProductCartViewItem>();
+            .GetComponent<ProductCartItemView>();
 
         view.AssignProduct(orderItem);
         itemViews.Add(view);

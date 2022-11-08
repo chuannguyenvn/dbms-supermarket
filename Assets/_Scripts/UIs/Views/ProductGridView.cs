@@ -14,7 +14,7 @@ public class ProductGridView : ProductView
         foreach (var (_, orderItem) in ProductOrderManager.Instance.Order)
         {
             var view = Instantiate(ResourceManager.Instance.ProductGridItemView, transform)
-                .GetComponent<ProductGridViewItem>();
+                .GetComponent<ProductGridItemView>();
 
             view.AssignProduct(orderItem);
             itemViews.Add(view);

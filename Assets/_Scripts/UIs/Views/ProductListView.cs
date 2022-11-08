@@ -13,7 +13,7 @@ public class ProductListView : ProductView
         foreach (var (_, orderItem) in ProductOrderManager.Instance.Order)
         {
             var view = Instantiate(ResourceManager.Instance.ProductListItemView, transform)
-                .GetComponent<ProductListViewItem>();
+                .GetComponent<ProductListItemView>();
 
             view.AssignProduct(orderItem);
             itemViews.Add(view);

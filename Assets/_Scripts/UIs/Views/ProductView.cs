@@ -4,5 +4,5 @@ using UnityEngine;
 
 public abstract class ProductView : UIElement
 {
-    protected List<ProductViewItem> itemViews = new();
+    protected List<ProductItemView> itemViews = new();
 }
