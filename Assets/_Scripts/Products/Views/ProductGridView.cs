@@ -17,7 +17,7 @@ public class ProductGridView : ProductView
                 .GetComponent<ProductGridViewItem>();
 
             view.AssignProduct(orderItem);
-            productItemViews.Add(view);
+            itemViews.Add(view);
 
             var viewRectTransform = view.GetComponent<RectTransform>();
             var height = viewRectTransform.rect.height;

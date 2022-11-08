@@ -8,43 +8,53 @@ public class ProductCartView : ProductView
 {
     private const float VERTICAL_SPACE = 30f;
 
+    [SerializeField] private Button cartButton;
     [SerializeField] private ScrollRect scrollRect;
     public bool IsVisible { get; private set; }
-    private List<ProductCartViewItem> viewItems = new();
-
-    private void Awake()
-    {
-        scrollRect.content.sizeDelta = new Vector2(0, VERTICAL_SPACE);
-    }
+    private RectTransform prefabItemRect;
 
     protected override void Start()
     {
         base.Start();
         Hide();
+        cartButton.onClick.AddListener(ToggleVisibility);
+        prefabItemRect = VisualManager.Instance.productCartItemRectTransform;
     }
 
-    public void AddNewViewItem(ProductOrderItem orderItem)
+    public void AddViewItem(ProductOrderItem orderItem)
     {
         var view = Instantiate(ResourceManager.Instance.ProductCartItemView)
             .GetComponent<ProductCartViewItem>();
 
         view.AssignProduct(orderItem);
+        itemViews.Add(view);
 
-        var itemRect = view.GetComponent<RectTransform>();
-        var initialLeftRight = itemRect.sizeDelta;
         view.transform.SetParent(scrollRect.content.transform);
-
-        itemRect.sizeDelta = initialLeftRight;
-        itemRect.anchoredPosition = new Vector2(0, -scrollRect.content.sizeDelta.y);
-        viewItems.Add(view);
-        UpdateContentHeight();
+        UpdateContentLayout();
     }
 
-    private void UpdateContentHeight()
+    public void RemoveViewItem(ProductOrderItem orderItem)
     {
-        var itemRect = VisualManager.Instance.productCartItemRectTransform;
+        var index = itemViews.FindIndex(item => item.OrderItem == orderItem);
+        if (index == -1) return;
+        Destroy(itemViews[index]);
+        itemViews.RemoveAt(index);
+        
+        UpdateContentLayout();
+    }
+
+    private void UpdateContentLayout()
+    {
+        var itemRectHeight = prefabItemRect.sizeDelta.y;
         scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x,
-            itemRect.sizeDelta.y * viewItems.Count + VERTICAL_SPACE * (viewItems.Count + 1));
+            itemRectHeight * itemViews.Count + VERTICAL_SPACE * (itemViews.Count + 1));
+
+        for (int i = 0; i < itemViews.Count; i++)
+        {
+            var itemPosY = -(itemRectHeight * i + itemRectHeight * (i + 1));
+            itemViews[i].RectTransform.anchoredPosition = new Vector2(0, itemPosY);
+            itemViews[i].RectTransform.sizeDelta = prefabItemRect.sizeDelta;
+        }
     }
 
     public void Show()
@@ -61,6 +71,7 @@ public class ProductCartView : ProductView
 
     public void ToggleVisibility()
     {
+        UIManager.Instance.OnScreenChanged();
         if (IsVisible) Hide();
         else Show();
     }

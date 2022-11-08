@@ -703,6 +703,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ccd43fb2d7c08a446ab1c55be124f42b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  rectTransform: {fileID: 4942258985709117329}
   productName: {fileID: 4942258985276352758}
   productPrice: {fileID: 4942258986080620356}
   productDescription: {fileID: 4942258986069282091}

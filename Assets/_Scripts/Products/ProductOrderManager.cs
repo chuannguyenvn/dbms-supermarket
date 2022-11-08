@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class ProductOrderManager : Singleton<ProductOrderManager>
 {
-    [SerializeField] private Button cartButton;
     [SerializeField] private ProductCartView productCartView;
 
     public Dictionary<Product, ProductOrderItem> Order = new();
@@ -15,21 +14,19 @@ public class ProductOrderManager : Singleton<ProductOrderManager>
     {
         foreach (var product in ProductManager.Instance.Products)
         {
-            var productOrder = new ProductOrderItem(product, 0);
-            productCartView.AddNewViewItem(productOrder);
-            Order.Add(product, productOrder);
+            Order.Add(product, new ProductOrderItem(product, 0));
         }
-
-        cartButton.onClick.AddListener(productCartView.ToggleVisibility);
     }
 
     public void AddOneProductItem(Product product)
     {
+        if (Order[product].Count == 0) productCartView.AddViewItem(Order[product]);
         Order[product].Count++;
     }
 
     public void RemoveOneProductItem(Product product)
     {
         Order[product].Count--;
+        if (Order[product].Count == 0) productCartView.RemoveViewItem(Order[product]);
     }
 }

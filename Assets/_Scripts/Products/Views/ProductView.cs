@@ -2,12 +2,7 @@
 using UnityEngine;
 
 
-public abstract class ProductView : MonoBehaviour
+public abstract class ProductView : UIElement
 {
-    protected List<ProductViewItem> productItemViews = new List<ProductViewItem>();
-
-    protected virtual void Start()
-    {
-        
-    }
+    protected List<ProductViewItem> itemViews = new();
 }

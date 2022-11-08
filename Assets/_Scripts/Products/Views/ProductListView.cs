@@ -16,7 +16,7 @@ public class ProductListView : ProductView
                 .GetComponent<ProductListViewItem>();
 
             view.AssignProduct(orderItem);
-            productItemViews.Add(view);
+            itemViews.Add(view);
 
             var viewRectTransform = view.GetComponent<RectTransform>();
             var height = viewRectTransform.rect.height;

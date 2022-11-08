@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class ProductViewItem : MonoBehaviour
 {
+    [SerializeField] protected RectTransform rectTransform;
+    public RectTransform RectTransform => rectTransform;
+    
     [SerializeField] protected TMP_Text productName;
     [SerializeField] protected TMP_Text productPrice;
     [SerializeField] protected TMP_Text productDescription;
@@ -16,6 +19,7 @@ public class ProductViewItem : MonoBehaviour
     [SerializeField] protected TMP_Text orderItemCount;
 
     protected ProductOrderItem orderItem;
+    public ProductOrderItem OrderItem => orderItem;
 
     public void AssignProduct(ProductOrderItem orderItem)
     {
