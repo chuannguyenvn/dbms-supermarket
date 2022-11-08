@@ -37,7 +37,7 @@ public class ProductCartView : ProductView
     {
         var index = itemViews.FindIndex(item => item.OrderItem == orderItem);
         if (index == -1) return;
-        Destroy(itemViews[index]);
+        Destroy(itemViews[index].gameObject);
         itemViews.RemoveAt(index);
         
         UpdateContentLayout();
@@ -51,9 +51,9 @@ public class ProductCartView : ProductView
 
         for (int i = 0; i < itemViews.Count; i++)
         {
-            var itemPosY = -(itemRectHeight * i + itemRectHeight * (i + 1));
+            var itemPosY = -(itemRectHeight * i + VERTICAL_SPACE * (i + 1));
             itemViews[i].RectTransform.anchoredPosition = new Vector2(0, itemPosY);
-            itemViews[i].RectTransform.sizeDelta = prefabItemRect.sizeDelta;
+            itemViews[i].RectTransform.sizeDelta = prefabItemRect.sizeDelta; // Must keep!
         }
     }
 
