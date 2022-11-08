@@ -1,14 +1,25 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 
-public class ProductCartView : MonoBehaviour
+public class ProductCartView : ProductView
 {
-    public bool IsVisible { get; private set; }
-    private List<ProductCartViewItem> viewItems = new List<ProductCartViewItem>();
+    private const float VERTICAL_SPACE = 30f;
 
-    private void Start()
+    [SerializeField] private ScrollRect scrollRect;
+    public bool IsVisible { get; private set; }
+    private List<ProductCartViewItem> viewItems = new();
+
+    private void Awake()
     {
+        scrollRect.content.sizeDelta = new Vector2(0, VERTICAL_SPACE);
+    }
+
+    protected override void Start()
+    {
+        base.Start();
         Hide();
     }
 
@@ -17,14 +28,23 @@ public class ProductCartView : MonoBehaviour
         var view = Instantiate(ResourceManager.Instance.ProductCartItemView)
             .GetComponent<ProductCartViewItem>();
 
-        viewItems.Add(view);
         view.AssignProduct(orderItem);
 
         var itemRect = view.GetComponent<RectTransform>();
         var initialLeftRight = itemRect.sizeDelta;
-        view.transform.SetParent(transform);
+        view.transform.SetParent(scrollRect.content.transform);
+
         itemRect.sizeDelta = initialLeftRight;
-        itemRect.anchoredPosition = new Vector2(0, -(viewItems.Count - 1) * itemRect.sizeDelta.y);
+        itemRect.anchoredPosition = new Vector2(0, -scrollRect.content.sizeDelta.y);
+        viewItems.Add(view);
+        UpdateContentHeight();
+    }
+
+    private void UpdateContentHeight()
+    {
+        var itemRect = VisualManager.Instance.productCartItemRectTransform;
+        scrollRect.content.sizeDelta = new Vector2(scrollRect.content.sizeDelta.x,
+            itemRect.sizeDelta.y * viewItems.Count + VERTICAL_SPACE * (viewItems.Count + 1));
     }
 
     public void Show()
