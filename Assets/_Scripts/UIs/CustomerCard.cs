@@ -9,16 +9,20 @@ public class CustomerCard : Singleton<CustomerCard>
     [SerializeField] private TMP_Text cardTypeText;
     [SerializeField] private TMP_Text pointText;
     [SerializeField] private TMP_Text issueDate;
-    
+
     private int pointCount;
-    
+
     public int PointCount
     {
         get => pointCount;
         set
         {
             pointCount = value;
-            pointText.text = pointCount.ToString("{0:n0}");
+
+            if (pointCount <= 1)
+                pointText.text = $"{pointCount:n0} Point";
+            else 
+                pointText.text = $"{pointCount:n0} Points";
         }
     }
 
