@@ -7,7 +7,8 @@ using UnityEngine.UI;
 public class NavigationBarButton : MonoBehaviour
 {
     [SerializeField] private Button button;
-
+    [SerializeField] private GameObject screen;
+    
     private void Start()
     {
         button.onClick.AddListener(() => NavigationBar.Instance.OnNavigationItemChosen(this));
@@ -16,13 +17,6 @@ public class NavigationBarButton : MonoBehaviour
 
     private void NavigationItemChosenHandler(NavigationBarButton item)
     {
-        if (item == this)
-        {
-            
-        }
-        else
-        {
-            
-        }
+        screen.SetActive(item == this);
     }
 }
