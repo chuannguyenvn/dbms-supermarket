@@ -1,7 +1,9 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Mono.Data.Sqlite;
 using System.Data;
 using System.Linq;
+using System.Text;
 using Dapper;
 using UnityEngine;
 
@@ -29,5 +31,41 @@ public class DapperFacade : PersistentSingleton<DapperFacade>
     public void Execute(string query, object param = null)
     {
         dbConnection.Execute(query, param);
+    }
+
+    public string FreeQuery(string query)
+    {
+        IDbCommand cmnd_read = dbConnection.CreateCommand();
+        IDataReader reader;
+        cmnd_read.CommandText = query;
+        StringBuilder result = new StringBuilder();
+        try
+        {
+            reader = cmnd_read.ExecuteReader();
+        }
+        catch (SqliteException e)
+        {
+            result.Append(string.Join(" ",
+                e.Message.Split(new[] {'\r'}, StringSplitOptions.RemoveEmptyEntries)));
+            return result.ToString();
+        }
+
+
+        result.Append(" | ");
+        for (int i = 0; i < reader.FieldCount; i++)
+        {
+            result.Append(reader.GetName(i) + " | ");
+        }
+
+        while (reader.Read())
+        {
+            result.Append("\n | ");
+            for (int i = 0; i < reader.FieldCount; i++)
+            {
+                result.Append(reader[i] + " | ");
+            }
+        }
+
+        return result.ToString();
     }
 }
