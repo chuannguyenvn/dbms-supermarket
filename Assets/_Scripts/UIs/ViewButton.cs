@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ViewButton : MonoBehaviour
 {
     [SerializeField] private Button button;
-    [SerializeField] private ViewGroup viewGroup;
+    [SerializeField] private View view;
     [SerializeField] private int buttonIndex;
 
 
@@ -19,11 +19,11 @@ public class ViewButton : MonoBehaviour
     {
         if (index == buttonIndex)
         {
-            viewGroup.Show();
+            view.Show();
         }
         else
         {
-            viewGroup.Hide();
+            view.Hide();
         }
     }
 }

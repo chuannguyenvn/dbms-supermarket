@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class ViewGroup : MonoBehaviour
+public class View : MonoBehaviour
 {
     [SerializeField] private CanvasGroup canvasGroup;
 
