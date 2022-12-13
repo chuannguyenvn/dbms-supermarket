@@ -2,9 +2,6 @@
 
 public class View : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup canvasGroup;
-
-    
     public void Show()
     {
         gameObject.SetActive(true);

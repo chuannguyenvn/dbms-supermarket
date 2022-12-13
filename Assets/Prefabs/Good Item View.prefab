@@ -59,7 +59,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.3339622, b: 0.3339622, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -463,7 +463,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 300, y: 500}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &9042101517392629312
 MonoBehaviour:
@@ -481,6 +481,7 @@ MonoBehaviour:
   priceText: {fileID: 9042101516434960483}
   brandText: {fileID: 9042101518035216102}
   typeText: {fileID: 9042101517197396194}
+  image: {fileID: 9042101516385659164}
 --- !u!1 &9042101518035216120
 GameObject:
   m_ObjectHideFlags: 0
