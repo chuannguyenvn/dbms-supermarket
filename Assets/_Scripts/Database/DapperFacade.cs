@@ -23,14 +23,62 @@ public class DapperFacade : PersistentSingleton<DapperFacade>
         dbConnection.Open();
     }
 
-    public List<T> Query<T>(string query, object param = null)
+    private void QueryNone(string query, object param = null)
+    {
+        dbConnection.Execute(query, param);
+    }
+
+    private T QuerySingle<T>(string query, object param = null)
+    {
+        return dbConnection.QuerySingle<T>(query, param);
+    }
+
+    private List<T> QueryList<T>(string query, object param = null)
     {
         return dbConnection.Query<T>(query, param).ToList();
     }
 
-    public void Execute(string query, object param = null)
+
+    public void QueryNone(Function function, object param = null)
     {
-        dbConnection.Execute(query, param);
+        try
+        {
+            string query = FunctionToQueryMapper.GetQuery(function);
+            QueryNone(query, param);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public T QuerySingle<T>(Function function, object param = null)
+    {
+        try
+        {
+            string query = FunctionToQueryMapper.GetQuery(function);
+            return QuerySingle<T>(query, param);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
+    }
+
+    public List<T> QueryList<T>(Function function, object param = null)
+    {
+        try
+        {
+            string query = FunctionToQueryMapper.GetQuery(function);
+            return QueryList<T>(query, param);
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+            throw;
+        }
     }
 
     public string FreeQuery(string query)

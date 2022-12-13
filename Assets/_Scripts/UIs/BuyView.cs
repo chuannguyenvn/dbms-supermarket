@@ -8,7 +8,7 @@ public class BuyView : View
 
     private void Start()
     {
-        foreach (var goodsData in DapperFacade.Instance.Query<GoodsData>("select * from goods"))
+        foreach (var goodsData in DapperFacade.Instance.QueryList<GoodsData>(Function.ReadGoods))
         {
             var goodGridItemViewGO = Instantiate(ResourceManager.Instance.GoodGridItemView,
                 scrollRect.content.transform);

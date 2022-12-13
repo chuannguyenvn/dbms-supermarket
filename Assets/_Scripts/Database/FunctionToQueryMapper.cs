@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using UnityEngine;
 
-public class FunctionToQueryMapper
+public static class FunctionToQueryMapper
 {
-    private Dictionary<Function, string> Dictionary = new()
+    private static readonly Dictionary<Function, string> dictionary = new()
     {
         #region Manager
 
@@ -45,12 +47,25 @@ public class FunctionToQueryMapper
 
         {Function.BuyGoods, "query"},
         // {Function.ReadSavingPointPolicy, "query"},
-        {Function.ReadCustomer, "query"},
+        {Function.ReadCustomer, "SELECT * FROM customer WHERE id = @id"},
         {Function.UpdateCustomer, "query"},
-        {Function.ReadGoods, "query"},
+        {Function.ReadGoods, "SELECT * FROM goods"},
         {Function.ReadCustomerExportBills, "query"},
         {Function.ReadCustomerCard, "query"},
 
         #endregion
     };
+
+    public static string GetQuery(Function function)
+    {
+        try
+        {
+            return dictionary[function];
+        }
+        catch
+        {
+            Debug.Log("Function " + function + " not implemented.");
+            throw;
+        }
+    }
 }
