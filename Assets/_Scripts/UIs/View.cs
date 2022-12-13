@@ -7,11 +7,11 @@ public class View : MonoBehaviour
     
     public void Show()
     {
-        canvasGroup.alpha = 1f;
+        gameObject.SetActive(true);
     }
     
     public void Hide()
     {
-        canvasGroup.alpha = 0f;
+        gameObject.SetActive(false);
     }
 }
