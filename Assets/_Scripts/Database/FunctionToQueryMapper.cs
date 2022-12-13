@@ -8,50 +8,61 @@ public static class FunctionToQueryMapper
     {
         #region Manager
 
-        {Function.ReadManagerProfile, "query"},
-        {Function.UpdateManagerProfile, "query"},
-        {Function.ReadManagingSupermarket, "query"},
-        {Function.ReadAllAvailablePromotions, "query"},
-        // {Function.Choose promotion to apply..., "query},
-        {Function.ReadManagingSupermarketPromotions, "query"},
-        {Function.ReadSupermarketSuppliers, "query"},
-        {Function.ReadSupermarketImportBill, "query"},
-        {Function.ReadGoodsQuantities, "query"},
-        {Function.ReadSavingPointPolicy, "query"},
-        {Function.ReadSupermarketRevenueOfDay, "query"},
-        {Function.ReadSupermarketRevenueOfMonth, "query"},
-        {Function.ReadSupermarketRevenueOfYear, "query"},
-        {Function.CreateSupplier, "query"},
-        {Function.UpdateSupplier, "query"},
-        {Function.DeleteSupplier, "query"},
-        {Function.CreateEmployee, "query"},
-        {Function.UpdateEmployee, "query"},
-        {Function.DeleteEmployee, "query"},
+        {Function.ReadManagerProfile, @"query"},
+        {Function.UpdateManagerProfile, @"query"},
+        {Function.ReadManagingSupermarket, @"query"},
+        {Function.ReadAllAvailablePromotions, @"query"},
+        // {Function.Choose promotion to apply..., @"query"},
+        {Function.ReadManagingSupermarketPromotions, @"query"},
+        {Function.ReadSupermarketSuppliers, @"query"},
+        {Function.ReadSupermarketImportBill, @"query"},
+        {Function.ReadGoodsQuantities, @"query"},
+        {Function.ReadSavingPointPolicy, @"query"},
+        {Function.ReadSupermarketRevenueOfDay, @"query"},
+        {Function.ReadSupermarketRevenueOfMonth, @"query"},
+        {Function.ReadSupermarketRevenueOfYear, @"query"},
+        {Function.CreateSupplier, @"query"},
+        {Function.UpdateSupplier, @"query"},
+        {Function.DeleteSupplier, @"query"},
+        {Function.CreateEmployee, @"query"},
+        {Function.UpdateEmployee, @"query"},
+        {Function.DeleteEmployee, @"query"},
 
         #endregion
 
         #region Cashier
 
-        {Function.ReadCashier, "query"},
-        {Function.CreateExportBill, "query"},
-        {Function.CreateImportBill, "query"},
-        // {Function.Add goods to storage..., "query"},
-        {Function.CreateCustomer, "query"},
-        {Function.CreateCustomerCard, "query"},
-        {Function.ReadSupermarketPromotions, "query"},
-        {Function.UpdateCashier, "query"},
+        {Function.ReadCashier, @"query"},
+        {Function.CreateExportBill, @"query"},
+        {Function.CreateImportBill, @"query"},
+        // {Function.Add goods to storage..., @"query"},
+        {Function.CreateCustomer, @"query"},
+        {Function.CreateCustomerCard, @"query"},
+        {Function.ReadSupermarketPromotions, @"query"},
+        {Function.UpdateCashier, @"query"},
 
         #endregion
 
         #region Customer
 
-        {Function.BuyGoods, "query"},
-        // {Function.ReadSavingPointPolicy, "query"},
+        {Function.BuyGoods, @"query"},
+        // {Function.ReadSavingPointPolicy, @"query"},
         {Function.ReadCustomer, "SELECT * FROM customer WHERE id = @ID"},
-        {Function.UpdateCustomer, "query"},
+        {
+            Function.UpdateCustomer, @"UPDATE customer
+            SET First_name = @First_name, Last_name = @Last_name, Gender = @Gender, Address = @Address,
+            Phone_number = @Phone_number, Date_of_birth = @Date_of_birth, Type = @Type
+            WHERE ID = @ID;"
+        },
         {Function.ReadGoods, "SELECT * FROM goods"},
-        {Function.ReadCustomerExportBills, "query"},
-        {Function.ReadCustomerCard, "query"},
+        {Function.ReadCustomerExportBills, @"query"},
+        {Function.ReadCustomerCard, @"query"},
+
+        #endregion
+
+        #region Admin
+
+        
 
         #endregion
     };
