@@ -37,8 +37,7 @@ public class DapperFacade : PersistentSingleton<DapperFacade>
     {
         return dbConnection.Query<T>(query, param).ToList();
     }
-
-
+    
     public void QueryNone(Function function, object param = null)
     {
         try

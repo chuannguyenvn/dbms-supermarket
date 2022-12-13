@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
+using UnityEngine.Serialization;
 
 public class ResourceManager : PersistentSingleton<ResourceManager>
 {
     public GoodGridItemView GoodGridItemView;
-    public EditableText EditableText;
+    [FormerlySerializedAs("editableField")] [FormerlySerializedAs("EditableText")] public Field field;
 
     public Sprite GetGoodsSpriteById(int goodsId)
     {
