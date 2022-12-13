@@ -47,7 +47,7 @@ public static class FunctionToQueryMapper
 
         {Function.BuyGoods, "query"},
         // {Function.ReadSavingPointPolicy, "query"},
-        {Function.ReadCustomer, "SELECT * FROM customer WHERE id = @id"},
+        {Function.ReadCustomer, "SELECT * FROM customer WHERE id = @ID"},
         {Function.UpdateCustomer, "query"},
         {Function.ReadGoods, "SELECT * FROM goods"},
         {Function.ReadCustomerExportBills, "query"},
