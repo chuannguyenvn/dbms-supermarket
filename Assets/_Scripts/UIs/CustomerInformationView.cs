@@ -1,19 +1,20 @@
 ﻿using System;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class CustomerInformationView : View
 {
-    public int CustomerID;
     [SerializeField] private DynamicDefaultAvatar dynamicDefaultAvatar;
-    [SerializeField] private CustomerDataTableReflector customerDataTableReflector;
+    [FormerlySerializedAs("customerDataTableReflector")] [SerializeField] private Customer_CustomerDataTableReflector customerCustomerDataTableReflector;
 
     private void Start()
     {
-        var param = new {ID = CustomerID};
-        var customerData = DapperFacade.Instance.QuerySingle<CustomerData>(Function.ReadCustomer, param);
+        var param = new {ID = CustomerViewManager.Instance.CustomerID};
+        var customerData =
+            DapperFacade.Instance.QuerySingle<CustomerData>(Function.ReadCustomerProfile, param);
 
         dynamicDefaultAvatar.Init(customerData.First_name);
-        customerDataTableReflector.Init(customerData);
+        customerCustomerDataTableReflector.Init(customerData);
     }
 }

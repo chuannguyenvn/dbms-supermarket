@@ -6,18 +6,18 @@ public class ViewButton : MonoBehaviour
 {
     [SerializeField] private Button button;
     [SerializeField] private View view;
-    [SerializeField] private int buttonIndex;
 
 
     private void Start()
     {
         Sidebar.Instance.ViewButtonPressed += ViewButtonPressedHandler;
-        button.onClick.AddListener(() => Sidebar.Instance.OnViewButtonPressed(buttonIndex));
+        button.onClick.AddListener(() =>
+            Sidebar.Instance.OnViewButtonPressed(transform.GetSiblingIndex()));
     }
 
     private void ViewButtonPressedHandler(int index)
     {
-        if (index == buttonIndex)
+        if (index == transform.GetSiblingIndex())
         {
             view.Show();
         }

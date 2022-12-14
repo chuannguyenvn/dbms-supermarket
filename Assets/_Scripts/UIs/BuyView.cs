@@ -6,9 +6,15 @@ public class BuyView : View
 {
     [SerializeField] private ScrollRect scrollRect;
 
+    private void OnEnable()
+    {
+        scrollRect.content.anchoredPosition = Vector2.zero;
+    }
+
     private void Start()
     {
-        foreach (var goodsData in DapperFacade.Instance.QueryList<GoodsData>(Function.ReadGoods))
+        foreach (var goodsData in DapperFacade.Instance.QueryList<GoodsData>(Function.ReadGoods,
+                     new {Supermarket_Scode = CustomerViewManager.Instance.Supermarket_Scode}))
         {
             var goodGridItemViewGO = Instantiate(ResourceManager.Instance.GoodGridItemView,
                 scrollRect.content.transform);
