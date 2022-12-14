@@ -21,18 +21,52 @@ public class CustomerDataTableReflector : TableReflector<CustomerData>
 
     protected override void CreateFields()
     {
-        firstNameField = CreateNewField("First_name", "First name", data.First_name, true);
-        lastNameField = CreateNewField("Last_name", "Last name", data.Last_name, true);
-        genderField = CreateNewField("Gender", "Gender", data.Gender, true);
-        addressField = CreateNewField("Address", "Address", data.Address, true);
-        phoneNumberField = CreateNewField("Phone_number", "Phone number", data.Phone_number, true);
-        dateOfBirthField =
-            CreateNewField("Date_of_birth", "Date of birth", data.Date_of_birth.Value, true);
-        typeField = CreateNewField("Type", "Type", data.Type, false);
+        firstNameField = CreateNewField(fieldDatabaseName: "First_name",
+            fieldDisplayName: "First name",
+            fieldType: FieldType.Name,
+            value: data.First_name,
+            editable: true);
+
+        lastNameField = CreateNewField(fieldDatabaseName: "Last_name",
+            fieldDisplayName: "Last name",
+            fieldType: FieldType.Name,
+            value: data.Last_name,
+            editable: true);
+
+        genderField = CreateNewField(fieldDatabaseName: "Gender",
+            fieldDisplayName: "Gender",
+            fieldType: FieldType.Name,
+            value: data.Gender,
+            editable: true);
+
+        addressField = CreateNewField(fieldDatabaseName: "Address",
+            fieldDisplayName: "Address",
+            fieldType: FieldType.Unrestricted,
+            value: data.Address,
+            editable: true);
+
+        phoneNumberField = CreateNewField(fieldDatabaseName: "Phone_number",
+            fieldDisplayName: "Phone number",
+            fieldType: FieldType.PhoneNumber,
+            value: data.Phone_number,
+            editable: true);
+
+        dateOfBirthField = CreateNewField(fieldDatabaseName: "Date_of_birth",
+            fieldDisplayName: "Date of birth",
+            fieldType: FieldType.Date,
+            value: data.Date_of_birth.Value,
+            editable: true);
+
+        typeField = CreateNewField(fieldDatabaseName: "Type",
+            fieldDisplayName: "Type",
+            fieldType: FieldType.Name,
+            value: data.Type,
+            editable: false);
     }
 
     protected override void Save()
     {
+        if (!Validate()) return;
         base.Save();
 
         DapperFacade.Instance.QueryNone(Function.UpdateCustomerProfile,

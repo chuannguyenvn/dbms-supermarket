@@ -10,7 +10,7 @@ public abstract class TableReflector<T> : MonoBehaviour
     [SerializeField] protected Button editButton;
     [SerializeField] protected Button saveButton;
     [SerializeField] protected Button cancelButton;
-    protected List<Field> editableTexts = new();
+    protected List<Field> fields = new();
 
 
     protected virtual void Start()
@@ -27,25 +27,25 @@ public abstract class TableReflector<T> : MonoBehaviour
 
     protected void AddNewEditableField(Field field)
     {
-        editableTexts.Add(field);
+        fields.Add(field);
     }
 
-    protected Field CreateNewField(string fieldDatabaseName, string fieldDisplayName, string value,
-        bool editable)
+    protected Field CreateNewField(string fieldDatabaseName, string fieldDisplayName,
+        FieldType fieldType, string value, bool editable)
     {
         var prefab = ResourceManager.Instance.field;
         var field = Instantiate(prefab, transform).GetComponent<Field>();
-        field.Init(fieldDatabaseName, fieldDisplayName, value, editable);
+        field.Init(fieldDatabaseName, fieldDisplayName, fieldType, value);
         if (editable) AddNewEditableField(field);
         return field;
     }
 
-    protected Field CreateNewField(string fieldDatabaseName, string fieldDisplayName, DateTime value,
-        bool editable)
+    protected Field CreateNewField(string fieldDatabaseName, string fieldDisplayName,
+        FieldType fieldType, DateTime value, bool editable)
     {
         var prefab = ResourceManager.Instance.field;
         var field = Instantiate(prefab, transform).GetComponent<Field>();
-        field.Init(fieldDatabaseName, fieldDisplayName, value, editable);
+        field.Init(fieldDatabaseName, fieldDisplayName, fieldType, value);
         if (editable) AddNewEditableField(field);
         return field;
     }
@@ -60,7 +60,7 @@ public abstract class TableReflector<T> : MonoBehaviour
 
     protected virtual void View()
     {
-        foreach (var editableText in editableTexts)
+        foreach (var editableText in fields)
         {
             editableText.View();
         }
@@ -72,7 +72,7 @@ public abstract class TableReflector<T> : MonoBehaviour
 
     protected virtual void Edit()
     {
-        foreach (var editableText in editableTexts)
+        foreach (var editableText in fields)
         {
             editableText.Edit();
         }
@@ -84,7 +84,7 @@ public abstract class TableReflector<T> : MonoBehaviour
 
     protected virtual void Save()
     {
-        foreach (var editableText in editableTexts)
+        foreach (var editableText in fields)
         {
             editableText.Save();
         }
@@ -94,11 +94,22 @@ public abstract class TableReflector<T> : MonoBehaviour
 
     protected virtual void Cancel()
     {
-        foreach (var editableText in editableTexts)
+        foreach (var editableText in fields)
         {
             editableText.Cancel();
         }
 
         View();
+    }
+
+    protected bool Validate()
+    {
+        bool allValid = true;
+        foreach (var field in fields)
+        {
+            allValid &= field.Validate();
+        }
+
+        return allValid;
     }
 }
