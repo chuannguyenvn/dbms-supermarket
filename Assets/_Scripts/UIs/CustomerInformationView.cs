@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class CustomerInformationView : View
 {
-    public int CustomerID;
     [SerializeField] private DynamicDefaultAvatar dynamicDefaultAvatar;
     [SerializeField] private CustomerDataTableReflector customerDataTableReflector;
 
     private void Start()
     {
-        var param = new {ID = CustomerID};
+        var param = new {ID = CustomerViewManager.Instance.CustomerID};
         var customerData =
             DapperFacade.Instance.QuerySingle<CustomerData>(Function.ReadCustomerProfile, param);
 
