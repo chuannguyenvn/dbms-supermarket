@@ -1,54 +1,88 @@
 ﻿public enum Function
 {
     #region Manager
-
     ReadManagerProfile,
     UpdateManagerProfile,
     ReadManagingSupermarket,
-    ReadAllAvailablePromotions,
-    //Choose promotion to apply...,
-    ReadManagingSupermarketPromotions,
+    ReadEmployeeProfile,
+    ReadManagingEmployeeList,
+    CreateManagingAvailablePromotions,
+    ReadManagingAvailablePromotions,
     ReadSupermarketSuppliers,
     ReadSupermarketImportBill,
+    ReadSupermarketExportBill,
     ReadGoodsQuantities,
     ReadSavingPointPolicy,
     ReadSupermarketRevenueOfDay,
     ReadSupermarketRevenueOfMonth,
     ReadSupermarketRevenueOfYear,
-    CreateSupplier,
-    UpdateSupplier,
-    DeleteSupplier,
-    CreateEmployee,
-    UpdateEmployee,
-    DeleteEmployee,
-
     #endregion
 
     #region Cashier
-    
-    ReadCashier,
+    ReadCashierProfile,
+    UpdateCashierProfile,
     CreateExportBill,
+    ReadExportBill,
+    UpdateExportBill,
+    DeleteExportBill,
     CreateImportBill,
-    //Add goods to storage...,
-    CreateCustomer,
+    ReadImportBill,
+    UpdateImportBill,
+    DeleteImportBill,
+    CreateGoods,
+    ReadGoods,
+    UpdateGoods,
+    DeleteGoods,
     CreateCustomerCard,
+    ReadCustomerCard,
+    UpdateCustomerCard,
+    DeleteCustomerCard,
     ReadSupermarketPromotions,
-    UpdateCashier,
-
+    ReadSavingPointPolicy,
     #endregion
 
     #region Customer
-
     BuyGoods,
-    //ReadSavingPointPolicy,
-    ReadCustomer,
-    UpdateCustomer,
+    ReadSavingPointPolicy,
+    ReadCustomerProfile,
+    UpdateCustomerProfile,
     ReadGoods,
     ReadCustomerExportBills,
     ReadCustomerCard,
-    // ReadSupermarketPromotions,
-    
-    
-    
+    ReadSupermarketAvailablePromotion,
+    #endregion
+
+    #region Admin
+    CreateManagerProfile,
+    ReadManagerProfile,
+    UpdateManagerProfile,
+    DeleteManagerProfile,
+    CreateCashierProfile,
+    ReadCashierProfile,
+    UpdateCashierProfile,
+    DeleteCashierProfile,
+    CreateCustomerProfile,
+    ReadCustomerProfile,
+    UpdateCustomerProfile,
+    DeleteCustomerProfile,
+    CreateSupermarketInformation,
+    ReadSupermarketInformation,
+    UpdateSupermarketInformation,
+    DeleteSupermarketInformation,
+    ReadEmployeeList,
+    AssignManagerToSupermarket,
+    CreateSupplierList,
+    ReadSupplierList,
+    UpdateSupplierList,
+    DeleteSupplierList,
+    ReadSupermarketRevenueOfDay,
+    ReadSupermarketRevenueOfMonth,
+    ReadSupermarketRevenueOfYear,
+    ReadAllGoods,
+    ReadAllImportBill,
+    ReadAllExportBill,
+    ReadSavingPointPolicy,
+    UpdateSavingPointPolicy,
+    ReadAllAvailablePromotions,
     #endregion
 }
