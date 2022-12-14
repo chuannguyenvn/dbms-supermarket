@@ -35,7 +35,7 @@ public class CustomerDataTableReflector : TableReflector<CustomerData>
     {
         base.Save();
 
-        DapperFacade.Instance.QueryNone(Function.UpdateCustomer,
+        DapperFacade.Instance.QueryNone(Function.UpdateCustomerProfile,
             new
             {
                 ID = data.ID,
