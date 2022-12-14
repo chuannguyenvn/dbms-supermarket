@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class CustomerDataTableReflector : TableReflector<CustomerData>
+public class Customer_CustomerDataTableReflector : TableReflector<CustomerData>
 {
     private Field firstNameField;
     private Field lastNameField;
