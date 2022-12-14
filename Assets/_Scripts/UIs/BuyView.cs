@@ -6,6 +6,11 @@ public class BuyView : View
 {
     [SerializeField] private ScrollRect scrollRect;
 
+    private void OnEnable()
+    {
+        scrollRect.content.anchoredPosition = Vector2.zero;
+    }
+
     private void Start()
     {
         foreach (var goodsData in DapperFacade.Instance.QueryList<GoodsData>(Function.ReadGoods,
