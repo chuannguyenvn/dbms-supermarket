@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 
 
-public class CustomerDataTableReflector : TableReflector<CustomerData>
+public class Customer_CustomerDataTableReflector : TableReflector<CustomerData>
 {
     private Field firstNameField;
     private Field lastNameField;
@@ -10,14 +10,7 @@ public class CustomerDataTableReflector : TableReflector<CustomerData>
     private Field phoneNumberField;
     private Field dateOfBirthField;
     private Field typeField;
-
-
-    public override void Init(CustomerData data)
-    {
-        this.data = data;
-        CreateFields();
-        UpdateButtonsSiblingIndex();
-    }
+    
 
     protected override void CreateFields()
     {
@@ -35,7 +28,7 @@ public class CustomerDataTableReflector : TableReflector<CustomerData>
 
         genderField = CreateNewField(fieldDatabaseName: "Gender",
             fieldDisplayName: "Gender",
-            fieldType: FieldType.Name,
+            fieldType: FieldType.Unrestricted,
             value: data.Gender,
             editable: true);
 
@@ -59,7 +52,7 @@ public class CustomerDataTableReflector : TableReflector<CustomerData>
 
         typeField = CreateNewField(fieldDatabaseName: "Type",
             fieldDisplayName: "Type",
-            fieldType: FieldType.Name,
+            fieldType: FieldType.Unrestricted,
             value: data.Type,
             editable: false);
     }

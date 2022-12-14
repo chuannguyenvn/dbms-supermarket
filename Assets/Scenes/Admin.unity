@@ -326,7 +326,27 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 225971367177387682, guid: 4f08d1bb2907c3f44951b1864128e951, type: 3}
       propertyPath: m_Name
-      value: Information View
+      value: Admin Information View
+      objectReference: {fileID: 0}
+    - target: {fileID: 968025213141868741, guid: 4f08d1bb2907c3f44951b1864128e951, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863131278519878715, guid: 4f08d1bb2907c3f44951b1864128e951, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1863131278519878715, guid: 4f08d1bb2907c3f44951b1864128e951, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189787484596093424, guid: 4f08d1bb2907c3f44951b1864128e951, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7189787484596093424, guid: 4f08d1bb2907c3f44951b1864128e951, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8094598737231520265, guid: 4f08d1bb2907c3f44951b1864128e951, type: 3}
       propertyPath: m_Pivot.x

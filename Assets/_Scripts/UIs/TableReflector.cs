@@ -22,7 +22,12 @@ public abstract class TableReflector<T> : MonoBehaviour
         View();
     }
 
-    public abstract void Init(T data);
+    public  void Init(T data)
+    {
+        CreateFields();
+        UpdateButtonsSiblingIndex();
+    }
+    
     protected abstract void CreateFields();
 
     protected void AddNewEditableField(Field field)
